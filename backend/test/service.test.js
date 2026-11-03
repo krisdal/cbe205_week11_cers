@@ -29,16 +29,16 @@ test("successful registration", async () => {
   );
   assert.equal(result.status, "CONFIRMED");
 });
-// test("rejects duplicate", async () => {
-//   await assert.rejects(
-//     () =>
-//       new RegistrationService(fake({ duplicate: true }), clock).register(
-//         "S001",
-//         "E1",
-//       ),
-//     { code: "DUPLICATE" },
-//   );
-// });
+test("rejects duplicate", async () => {
+  await assert.rejects(
+    () =>
+      new RegistrationService(fake({ duplicate: true }), clock).register(
+        "S001",
+        "E1",
+      ),
+    { code: "DUPLICATE" },
+  );
+});
 test("rejects full event", async () => {
   await assert.rejects(
     () =>

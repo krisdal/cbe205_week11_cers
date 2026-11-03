@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import pg from 'pg';
-import { PgRegistrationRepository } from './src/repository.js';
+import { PgRegistrationRepository } from '../src/repository.js';
 
 const pool = new pg.Pool({
     connectionString: process.env.DATABASE_URL
@@ -34,10 +34,10 @@ const registration = await repository.transaction(
 );
 
 // use to verify ROLLBACK
-// await repository.transaction(async (tx) => {
-//   await tx.create('S001', 'E003');
+await repository.transaction(async (tx) => {
+    await tx.create('S001', 'E003');
 
-//   throw new Error('Simulated failure');
-// });
+    throw new Error('Simulated failure');
+});
 
 console.log(registration);

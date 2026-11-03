@@ -15,8 +15,8 @@ export class RegistrationService {
         now >= new Date(event.registration_close_at)
       )
         throw new RegistrationError("CLOSED", "Registration is closed");
-      // if (await tx.exists(studentId, eventId))
-      //   throw new RegistrationError("DUPLICATE", "You have already registered");
+      if (await tx.exists(studentId, eventId))
+        throw new RegistrationError("DUPLICATE", "You have already registered");
       if ((await tx.countConfirmed(eventId)) >= event.capacity)
         throw new RegistrationError("FULL", "This event is full");
       return tx.create(studentId, eventId);
