@@ -26,6 +26,15 @@ This is a teaching demonstration, not a production authentication system. No rea
 
 `cd frontend && npm install && npm run dev` then open the Vite URL shown in the terminal.
 
+## Continuous integration
+
+The repository has separate GitHub Actions workflows for the two applications:
+
+- **Backend CI** runs the backend unit tests when backend files change.
+- **Frontend CI** creates a production Vite build when frontend files change.
+
+Both workflows run for pushes and pull requests that affect their application. They can also be run manually from the **Actions** tab on GitHub.
+
 ## Appendix (How to create a new database)
 
 1. Install Postgres on your machine. https://www.postgresql.org/download/
