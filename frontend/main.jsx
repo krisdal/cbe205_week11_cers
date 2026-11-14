@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-const base = "http://localhost:3001";
+const base = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
+
 function App() {
     const [events, setEvents] = useState([]);
     const [message, setMessage] = useState("");
