@@ -4,7 +4,7 @@
 
 1. Create a local PostgreSQL database `cers_week11`. (see Appendix)
 2. Run `psql -d cers_week11 -f database/schema.sql` and `psql -d cers_week11 -f database/seed.sql` (adjust connection flags as needed).
-3. `cd backend && npm install && cp .env.example .env` then edit DATABASE_URL.
+3. `cd backend && npm install && cp .env.example .env` then edit DATABASE_URL. Set `DATABASE_SSL=true` if your hosted PostgreSQL provider requires TLS; leave it `false` for a local database.
 4. `npm test` (unit tests do not require PostgreSQL); `npm run dev`.
 5. Open the frontend HTML file using a local HTTP server or run it with Vite. The UI calls `http://localhost:3001` directly.
 
