@@ -2,6 +2,9 @@ export class PgRegistrationRepository {
   constructor(pool) {
     this.pool = pool;
   }
+  async checkHealth() {
+    await this.pool.query("SELECT 1");
+  }
   async listEvents() {
     const { rows } = await this.pool.query(
       `SELECT e.*, (SELECT COUNT(*)::int FROM registrations r WHERE r.event_id=e.event_id AND r.status='CONFIRMED') AS registered FROM events e ORDER BY start_at`,

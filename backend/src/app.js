@@ -10,6 +10,15 @@ export function createApp(repository, service) {
     next();
   });
   app.use(express.json());
+  app.get("/api/health", async (_req, res) => {
+    try {
+      await repository.checkHealth();
+      res.json({ status: "ok", database: "ok" });
+    } catch (e) {
+      console.error(e);
+      res.status(503).json({ status: "error", database: "unavailable" });
+    }
+  });
   app.get("/api/events", async (_req, res, next) => {
     try {
       res.json(await repository.listEvents());

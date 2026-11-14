@@ -10,6 +10,7 @@
 
 ## API
 
+- GET `/api/health` (checks API and database readiness)
 - GET `/api/events`
 - GET `/api/events/E001`
 - POST `/api/events/E001/registrations` (student identity is fixed server-side to `S001`)
