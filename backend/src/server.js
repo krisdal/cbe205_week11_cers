@@ -5,7 +5,7 @@ import { RegistrationService } from "./service.js";
 import { createApp } from "./app.js";
 const pool = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
-    ...(process.env.DATABASE_SSL === "true" ? { ssl: true } : {}),
+    ...(process.env.DATABASE_SSL === "true" ? { ssl: { rejectUnauthorized: false } } : {}),
 });
 const repository = new PgRegistrationRepository(pool);
 const service = new RegistrationService(repository);

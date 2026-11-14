@@ -6,7 +6,7 @@
 2. Run `psql -d cers_week11 -f database/schema.sql` and `psql -d cers_week11 -f database/seed.sql` (adjust connection flags as needed).
 3. `cd backend && npm install && cp .env.example .env` then edit DATABASE_URL. Set `DATABASE_SSL=true` if your hosted PostgreSQL provider requires TLS; leave it `false` for a local database.
 4. `npm test` (unit tests do not require PostgreSQL); `npm run dev`.
-5. Open the frontend HTML file using a local HTTP server or run it with Vite. The UI calls `http://localhost:3001` directly.
+5. Run the frontend with Vite. It calls `http://localhost:3001` by default; set `VITE_API_BASE_URL` to your API origin (for example, `https://cbe205-week11-cers.onrender.com`) in the frontend build environment to override it.
 
 ## API
 
